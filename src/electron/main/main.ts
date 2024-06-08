@@ -2,7 +2,7 @@ import {join} from 'path';
 import {app, BrowserWindow, dialog, ipcMain, shell} from 'electron';
 import {exec} from 'child_process';
 import {EVENTS_KEYS} from "../utils/EVENTS_KEYS";
-import { index } from '../config';
+import config from '../config';
 
 const isDev = process.env.npm_lifecycle_event === "app:dev";
 
@@ -14,21 +14,11 @@ async function handleFileOpen() {
 }
 
 function createWindow() {
-    const mainWindow = new BrowserWindow({
-        width: 400,
-        height: 700,
-        title: 'DNS Changer',
-        center: true,
-        resizable: false,
-        webPreferences: {
-            nodeIntegration: true,
-            preload: join(__dirname, './preload.js'),
-        },
-    });
+    const mainWindow = new BrowserWindow(config.window);
     mainWindow.setMenu(null)
 
     if (isDev) {
-        mainWindow.loadURL(`http://localhost:${index.port}`);
+        mainWindow.loadURL(`http://localhost:${config.port}`);
     } else {
         mainWindow.loadFile(join(__dirname, '../../../index.html'));
     }
