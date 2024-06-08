@@ -6,13 +6,6 @@ import config from '../config';
 
 const isDev = process.env.npm_lifecycle_event === "app:dev";
 
-async function handleFileOpen() {
-    const {canceled, filePaths} = await dialog.showOpenDialog({title: "Open File"})
-    if (!canceled) {
-        return filePaths[0]
-    }
-}
-
 function createWindow() {
     const mainWindow = new BrowserWindow(config.window);
     mainWindow.setMenu(null)
@@ -26,7 +19,6 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-    ipcMain.handle('dialog:openFile', handleFileOpen)
     ipcMain.on(EVENTS_KEYS.CHANGE_DNS, (event, args) => {
         const {primaryDns, secondaryDns} = args;
 
