@@ -6,6 +6,9 @@
       <div class="row-c mt-2">
         <active-button :is-active="active" @click="activate"/>
       </div>
+      <div class="app-text-secondary text-small f-center m-1-0">
+        بعد از فعال یا غیر فعال کردن، می‌توانید برنامه را کامل ببندید.
+      </div>
       <div v-if="selectedServer" class="app-bg-paper round-10 p-2 row-a gap m-2-0">
         <img :src="selectedServer.image"
              class="dns-logo"
@@ -19,9 +22,15 @@
         </div>
 
       </div>
+      <label>
+        <span class="text-small">نوع آداپتور</span>
+        <select class="app-bg-paper round-10 p-2 m-1-0 w-100 borderless" v-model="adapter">
+          <option v-for="adapter in adapters" :value="adapter">{{adapter}}</option>
+        </select>
+      </label>
 
-      <div v-if="servers">
-        <p>لیست سرور‌ها</p>
+      <div v-if="servers" class="mt-3">
+        <p class="text-bold">لیست سرور‌ها</p>
         <div v-for="(server,index) in servers" :key="server.id" class="mt-1">
           <div class="divider-border round-10 p-2 row-a gap box pointer" @click="setServer(server.id)">
             <img :src="server.image"
@@ -63,6 +72,8 @@ const {selectedServer, servers} = storeToRefs(serversStore)
 
 const rtlClass = computed(() => ['fa', 'ar'].includes(locale.value) ? 'persianFont' : '')
 const active = ref(false)
+const adapters = ref(['Wi-Fi'])
+const adapter = ref('Wi-Fi')
 
 const activate = () => {
   if (active.value){
@@ -71,7 +82,8 @@ const activate = () => {
   }else{
     (window as any).ipcRenderer.send(EVENTS_KEYS.CHANGE_DNS, {
       primaryDns: selectedServer.value?.dns1 ?? '',
-      secondaryDns: selectedServer.value?.dns2 ?? ''
+      secondaryDns: selectedServer.value?.dns2 ?? '',
+      adaptor: adapter.value
     });
     active.value = true
   }
@@ -84,9 +96,7 @@ const setServer = (id: number) => {
   window.scrollTo(0, 0);
 }
 
-onMounted(async () => {
-  serversStore.getServers();
-
+const checkCurrentDns = async () => {
   try {
     const res = await (window as any).ipcRenderer.invoke(EVENTS_KEYS.CHECK_DNS, 'Wi-Fi');
     const currentDnsServer = servers.value.find(_server => (_server.dns1 == res?.[0] && _server.dns2 == res?.[1]));
@@ -97,6 +107,23 @@ onMounted(async () => {
   } catch (error) {
     console.error('Error getting DNS:', error);
   }
+}
+
+const getAdaptersList = async () => {
+  try {
+    const res = await (window as any).ipcRenderer.invoke(EVENTS_KEYS.GET_ADAPTERS);
+    if(res && res.length > 0){
+      adapters.value = res
+    }
+  } catch (error) {
+    console.error('Error getting DNS:', error);
+  }
+}
+
+onMounted(async () => {
+  serversStore.getServers();
+  checkCurrentDns()
+  getAdaptersList()
 })
 </script>
 <style lang="scss">

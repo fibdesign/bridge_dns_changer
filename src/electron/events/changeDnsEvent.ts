@@ -2,10 +2,10 @@ import {exec} from "child_process";
 import IpcMainEvent = Electron.IpcMainEvent;
 
 export const changeDnsEvent =  (_event:IpcMainEvent, args:any) => {
-    const {primaryDns, secondaryDns} = args;
+    const {primaryDns, secondaryDns, adaptor} = args;
 
-    const command1 = `netsh interface ipv4 set dnsservers name="Wi-Fi" static ${primaryDns} primary`;
-    const command2 = `netsh interface ipv4 add dnsservers name="Wi-Fi" ${secondaryDns} index=2`;
+    const command1 = `netsh interface ipv4 set dnsservers name="${adaptor}" static ${primaryDns} primary`;
+    const command2 = `netsh interface ipv4 add dnsservers name="${adaptor}" ${secondaryDns} index=2`;
     const command3 = 'ipconfig /flushdns';
 
     exec(command1, (error1, stdout1, stderr1) => {

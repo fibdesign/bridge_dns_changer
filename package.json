@@ -1,7 +1,7 @@
 {
   "name": "dns_changer",
   "private": true,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Your Name",
   "main": "dist/electron/electron/main/main.js",
   "scripts": {

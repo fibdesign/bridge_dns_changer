@@ -6,6 +6,7 @@ import {openLinkEvent} from "../events/openLinkEvent";
 import {clearDnsEvent} from "../events/clearDnsEvent";
 import {changeDnsEvent} from "../events/changeDnsEvent";
 import {checkDnsEvent} from "../events/checkDnsEvent";
+import {getAdaptersEvent} from "../events/getAdaptersEvent";
 
 const isDev = process.env.npm_lifecycle_event === "app:dev";
 
@@ -18,7 +19,7 @@ function createWindow() {
     } else {
         mainWindow.loadFile(join(__dirname, '../../../index.html'));
     }
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
@@ -26,6 +27,7 @@ app.whenReady().then(() => {
     ipcMain.on(EVENTS_KEYS.CLEAR_DNS, clearDnsEvent);
     ipcMain.on(EVENTS_KEYS.OPEN_LINK, openLinkEvent);
     ipcMain.handle(EVENTS_KEYS.CHECK_DNS, checkDnsEvent);
+    ipcMain.handle(EVENTS_KEYS.GET_ADAPTERS, getAdaptersEvent);
     createWindow()
     app.on('activate', function () {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()

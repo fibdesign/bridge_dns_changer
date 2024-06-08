@@ -4,4 +4,5 @@ export const EVENTS_KEYS = {
     OPEN_LINK: 'open-link',
     CHECK_DNS: 'check-dns',
     DNS_RESULT: 'dns-result',
+    GET_ADAPTERS: 'get-adapters',
 }
