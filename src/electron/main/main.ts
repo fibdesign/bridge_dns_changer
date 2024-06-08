@@ -1,6 +1,7 @@
 import {join} from 'path';
 import {app, BrowserWindow, contextBridge, dialog, ipcMain, ipcRenderer, shell} from 'electron';
 import { exec } from 'child_process';
+import {EVENTS_KEYS} from "../utils/EVENTS_KEYS";
 
 const isDev = process.env.npm_lifecycle_event === "app:dev";
 
@@ -39,7 +40,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
     ipcMain.handle('dialog:openFile', handleFileOpen)
-    ipcMain.on('change-dns', (event, args) => {
+    ipcMain.on(EVENTS_KEYS.CHANGE_DNS, (event, args) => {
         const { primaryDns, secondaryDns } = args;
 
         const command1 = `netsh interface ipv4 set dnsservers name="Wi-Fi" static ${primaryDns} primary`;
@@ -71,7 +72,7 @@ app.whenReady().then(() => {
             });
         });
     });
-    ipcMain.on('clear-dns', (event) => {
+    ipcMain.on(EVENTS_KEYS.CLEAR_DNS, (event) => {
 
         const command1 = `netsh interface ipv4 set dns name="Wi-Fi" dhcp`;
         const command2 = `ipconfig /flushdns`;
@@ -92,7 +93,7 @@ app.whenReady().then(() => {
             });
         });
     });
-    ipcMain.on('open-link', (event,url:string) => {
+    ipcMain.on(EVENTS_KEYS.OPEN_LINK, (event,url:string) => {
         shell.openExternal(url)
     });
     createWindow()

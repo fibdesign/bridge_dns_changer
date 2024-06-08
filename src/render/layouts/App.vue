@@ -52,6 +52,7 @@ import {computed, onMounted, ref} from "vue";
 import IconifyIcon from "@/render/components/app/IconifyIcon.vue";
 import ActiveButton from "@/render/components/ActiveButton.vue";
 import useServersStore from "@/render/store/ServersStore";
+import {EVENTS_KEYS} from "@/electron/utils/EVENTS_KEYS";
 
 const {locale} = useI18n()
 const store = useAppStore()
@@ -65,10 +66,10 @@ const active = ref(false)
 
 const activate = () => {
   if (active.value){
-    (window as any).ipcRenderer.send('clear-dns')
+    (window as any).ipcRenderer.send(EVENTS_KEYS.CLEAR_DNS)
     active.value = false
   }else{
-    (window as any).ipcRenderer.send('change-dns', {
+    (window as any).ipcRenderer.send(EVENTS_KEYS.CHANGE_DNS, {
       primaryDns: selectedServer.value?.dns1 ?? '',
       secondaryDns: selectedServer.value?.dns2 ?? ''
     });
@@ -78,7 +79,7 @@ const activate = () => {
 
 const setServer = (id: number) => {
   serversStore.selectServer(id);
-  (window as any).ipcRenderer.send('clear-dns')
+  (window as any).ipcRenderer.send(EVENTS_KEYS.CLEAR_DNS)
   active.value = false
   window.scrollTo(0, 0);
 }
