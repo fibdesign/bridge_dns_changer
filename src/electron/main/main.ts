@@ -3,6 +3,7 @@ import {app, BrowserWindow, dialog, ipcMain, shell} from 'electron';
 import {exec} from 'child_process';
 import {EVENTS_KEYS} from "../utils/EVENTS_KEYS";
 import config from '../config';
+import {openLinkEvent} from "../events/openLinkEvent";
 
 const isDev = process.env.npm_lifecycle_event === "app:dev";
 
@@ -72,9 +73,7 @@ app.whenReady().then(() => {
             });
         });
     });
-    ipcMain.on(EVENTS_KEYS.OPEN_LINK, (event, url: string) => {
-        shell.openExternal(url)
-    });
+    ipcMain.on(EVENTS_KEYS.OPEN_LINK, openLinkEvent);
     createWindow()
     app.on('activate', function () {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
