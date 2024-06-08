@@ -11,7 +11,7 @@ const config = {
         resizable: false,
         webPreferences: {
             nodeIntegration: true,
-            preload: join(__dirname, './preload.js'),
+            preload: join(__dirname, '../main/preload.js'),
         },
     }
 }
