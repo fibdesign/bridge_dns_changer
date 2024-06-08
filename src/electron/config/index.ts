@@ -4,7 +4,7 @@ const config = {
     port: 5173,
 
     window: {
-        width: 400,
+        width: 1000,
         height: 700,
         title: 'DNS Changer',
         center: true,

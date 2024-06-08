@@ -84,8 +84,19 @@ const setServer = (id: number) => {
   window.scrollTo(0, 0);
 }
 
-onMounted(() => {
-  serversStore.getServers()
+onMounted(async () => {
+  serversStore.getServers();
+
+  try {
+    const res = await (window as any).ipcRenderer.invoke(EVENTS_KEYS.CHECK_DNS, 'Wi-Fi');
+    const currentDnsServer = servers.value.find(_server => (_server.dns1 == res?.[0] && _server.dns2 == res?.[1]));
+    if(currentDnsServer) {
+      serversStore.selectServer(currentDnsServer.id);
+      active.value = true
+    }
+  } catch (error) {
+    console.error('Error getting DNS:', error);
+  }
 })
 </script>
 <style lang="scss">
