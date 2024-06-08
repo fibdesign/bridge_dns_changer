@@ -2,6 +2,7 @@ import {join} from 'path';
 import {app, BrowserWindow, dialog, ipcMain, shell} from 'electron';
 import {exec} from 'child_process';
 import {EVENTS_KEYS} from "../utils/EVENTS_KEYS";
+import { index } from '../config';
 
 const isDev = process.env.npm_lifecycle_event === "app:dev";
 
@@ -27,7 +28,7 @@ function createWindow() {
     mainWindow.setMenu(null)
 
     if (isDev) {
-        mainWindow.loadURL('http://localhost:5173');
+        mainWindow.loadURL(`http://localhost:${index.port}`);
     } else {
         mainWindow.loadFile(join(__dirname, '../../../index.html'));
     }
