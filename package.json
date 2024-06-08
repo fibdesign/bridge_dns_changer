@@ -17,6 +17,7 @@
   },
   "build": {
     "appId": "ir.fibdesign.dnschanger",
+    "compression": "maximum",
     "asar": true,
     "directories": {
       "buildResources": "assets",
