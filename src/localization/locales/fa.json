@@ -1,0 +1,301 @@
+{
+  "about": {
+    "subtitle": "با {name} بیشتر آشنا شوید",
+    "title": "داستان ما"
+  },
+  "app": {
+    "cta": "مشاهده خدمات",
+    "description": "فیبوناچی یک گروه نرم افزاریه که کمکتون می‌کنه تا در کسب و کارتون پیشرفت کنید.",
+    "keywords": "طراحی وب سایت، برنامه نویسی وب سایت، اپلیکشین، نرم افزار، برنامه نویسی",
+    "name": "DNS Changer",
+    "ogDescription": "فیبوناچی یک گروه نرم افزاریه که کمکتون می‌کنه تا در کسب و کارتون پیشرفت کنید.",
+    "ogTitle": "فیبوناچی",
+    "secondaryCta": "مشاهده خدمات",
+    "subName": "گروه نرم افزاری فیبوناچی"
+  },
+  "articles": {
+    "description": "آخرین مطالب مربوط به خدمات ما",
+    "details": {
+      "category": "دسته‌بندی",
+      "fastAccess": {
+        "files": "فایل‌ها",
+        "gallery": "آلبوم عکس",
+        "title": "دسترسی سریع",
+        "videos": "ویدیو‌ها"
+      },
+      "publishedAt": "تاریخ اتشار",
+      "readingTime": "زمان مطالعه",
+      "time": "{time} دقیقه",
+      "title": "جزئیات مقاله",
+      "visitCount": "تعداد بازدید"
+    },
+    "relatedArticles": "مقالات مرتبط",
+    "tags": "برچسب‌ها",
+    "title": "مطالبی برای خواندن"
+  },
+  "auth": {
+    "email": "ایمیل",
+    "firstName": "نام",
+    "forgotPassword": "رمز عبور خود را فراموش کرده اید؟",
+    "forgotPasswordSubTitle": "برای شما یک کد 6 رقمی ارسال خواهد شد",
+    "forgotPasswordTitle": "بازیابی رمز عبور",
+    "lastName": "نام خانوادگی",
+    "loginBtn": "ورود",
+    "loginTitle": "ورود به حساب کاربری",
+    "otpShortTitle": "کد تأیید",
+    "otpSubTitle": "کد تأیید ارسال شده به شماره {phone}",
+    "otpTitle": "کد تأیید را وارد نمایید",
+    "password": "رمز عبور",
+    "passwordConfirmation": "تکرار رمز عبور",
+    "phone": "تلفن همراه",
+    "registerBtn": "ثبت نام",
+    "registerShotTitle": "ثبت نام",
+    "registerTitle": "ثبت نام در {siteName}",
+    "tryLogin": "قبلا ثبت نام کرده اید؟ وارد شود.",
+    "tryRegister": "هنوز ثبت نام نکرده اید؟ ثبت نام کنید."
+  },
+  "btns": {
+    "add": "ثبت",
+    "all": "مشاهده همه",
+    "back": "بازگشت",
+    "delete": "حذف",
+    "edit": "ویرایش",
+    "more": "مشاهده بیشتر",
+    "moreLabel": "مشاهده بیشتر درباره {title}",
+    "new": "ثبت {title} جدید",
+    "send": "ارسال"
+  },
+  "captcha": {
+    "sum": "مجموع"
+  },
+  "cart": {
+    "discount": "تومان تخفیف"
+  },
+  "cartBox": {
+    "products": "جمع محصولات",
+    "profit": "سود شما از خرید",
+    "shipping": "هزینه ارسال",
+    "tax": "مالیات بر ارزش افزوده",
+    "total": "جمع سفارش"
+  },
+  "categories": {
+    "title": "دسته‌بندی‌ها"
+  },
+  "checkout": {
+    "pay": "پرداخت",
+    "title": "پرداخت سفارش"
+  },
+  "clients": {
+    "title": "رضایت مشتریان"
+  },
+  "comments": {
+    "beFirst": "اولین نفری باشید که نظر می‌دهد!",
+    "form": {
+      "content": "دیدگاه شما",
+      "rate": "امتیاز",
+      "terms": {
+        "first": "ثبت دیدگاه به معنی موافقت با ",
+        "second": "قوانین انتشار",
+        "third": "است."
+      },
+      "title": "دیدگاه خود را بنویسید"
+    },
+    "guest": "کاربر مهمان",
+    "login": "جهت ثبت دیدگاه وارد شوید و یا ثبت نام نمایید.",
+    "noComments": "بدون دیدگاه",
+    "title": "نظرات کاربران"
+  },
+  "contacts": {
+    "email": "info{'@'}fibdesign.ir",
+    "form": {
+      "content": "متن",
+      "email": "ایمیل",
+      "name": "نام و نام خانوادگی",
+      "phone": "تلفن همراه"
+    },
+    "instagram": "{'@'}fibdesign.ir",
+    "location": "خراسان رضوی، مشهد",
+    "location2": "-----",
+    "phone": "0915-------",
+    "phone2": "0915-------"
+  },
+  "copyRights": "تمامی حقوق سایت {siteName} محفوظ می‌باشد.",
+  "count": "عدد",
+  "coupon": {
+    "btn": "اعمال",
+    "title": "کد تخفیف"
+  },
+  "details": "جزئیات",
+  "developer": "طراحی و اجرا: فیبوناچی",
+  "homeTrustCards": {
+    "authenticity": {
+      "subtitle": "ارائه محصولات با کیفیت",
+      "title": "تضمین اصالت کالا"
+    },
+    "paymentProtection": {
+      "subtitle": "درگاه پرداخت مطمئن",
+      "title": "پرداخت امن"
+    },
+    "shovel": {
+      "subtitle": "مستقیم از مزرعه به خریدار",
+      "title": "خرید از تولید کننده"
+    },
+    "truck": {
+      "subtitle": "ارسال با پست پیشتاز",
+      "title": "ارسال به سرار کشور"
+    }
+  },
+  "invoices": {
+    "date": "تاریخ ثبت سفارش",
+    "id": "شناسه سفارش",
+    "invoice": "سفارش",
+    "location": "نشانی",
+    "pay": "مشاهده و پرداخت",
+    "price": "مجموع",
+    "products": "محصولات",
+    "shippingTime": "زمان ارسال",
+    "title": "سفارشات"
+  },
+  "locale": {
+    "en": "انگلیسی",
+    "fa": "فارسی"
+  },
+  "location": {
+    "locating": "در حال مکان یابی",
+    "newLocation": "نشانی جدید"
+  },
+  "navigation": {
+    "about": "درباره ما",
+    "articles": "مطالب",
+    "contact": "ارتباط با ما",
+    "home": "صفحه اصلی",
+    "privacy": "حریم خصوصی",
+    "products": "محصولات",
+    "terms": "قوانین و مقررات"
+  },
+  "packages": {
+    "select": {
+      "noOptions": "موردی وجود ندارد",
+      "noResult": "مورد مشابهی پیدا نشد"
+    }
+  },
+  "pagination": {
+    "next": "بعدی",
+    "prev": "قبلی"
+  },
+  "paymentResult": {
+    "backHome": "بازگشت به خانه",
+    "filed": "ناموفق",
+    "invoices": "مشاهده سفارشات",
+    "retry": "بارگذاری مجدد",
+    "successful": "موفق",
+    "support": "ارتباط با پشتیبانی",
+    "transactionId": "شناسه تراکنش",
+    "transactions": "مشاهده تراکنش‌ها"
+  },
+  "price": "{price} تومان",
+  "priceSymbol": "تومان",
+  "products": {
+    "addToCart": "افزودن به سبد خرید",
+    "attributes": "مشخصات",
+    "commentsRate": "امتیاز {count} خریدار",
+    "description": "توضیحات",
+    "files": "فایل‌ها",
+    "free": "رایگان",
+    "limitedStorage": "فقط {count} عدد در انبار باقی مانده است",
+    "metaDescription": "خرید جدیدتری محصولات در مشهد و سرار کشور",
+    "outStock": "ناموجود",
+    "quantity": " {count} عدد ",
+    "relatedProducts": "محصولات مشابه",
+    "seeInCart": "مشاهده محصول در سبد خرید",
+    "title": "محصولات"
+  },
+  "profile": {
+    "addresses": {
+      "address": "نشانی",
+      "create": {
+        "title": "افزودن نشانی جدید"
+      },
+      "edit": {
+        "title": "بروزرسانی نشانی"
+      },
+      "empty": "شما هیچ نشانی‌ای ثبت نکرده‌اید.",
+      "form": {
+        "address": {
+          "label": "نشانی",
+          "placeholder": "مثال: خیابان فلان، کوچه 1، پلاک 1"
+        },
+        "city": {
+          "label": "شهر",
+          "placeholder": "انتخاب شهر"
+        },
+        "location": {
+          "currentLocation": " موقعیت مکانی",
+          "edit": "ویرایش مکان",
+          "label": "انتخاب موقعیت مکانی",
+          "placeholder": ""
+        },
+        "phone": {
+          "label": "تلفن همراه",
+          "placeholder": "مثال: 091500000000"
+        },
+        "province": {
+          "label": "استان",
+          "placeholder": "انتخاب استان"
+        },
+        "receiver": {
+          "label": "نام و نام خانوادگی دریافت کننده",
+          "placeholder": "مثال: علی علیزاده"
+        },
+        "title": {
+          "label": "عنوان",
+          "placeholder": "مثال: خانه خودمون"
+        },
+        "zip": {
+          "label": "کد پستی",
+          "placeholder": "مثال: 91919191"
+        }
+      }
+    },
+    "menu": "منو",
+    "notifications": {
+      "accountNotify": "لطفا جهت استفاده از خدمات، اطلاعات کاربری خود را تکمیل نمایید.",
+      "cartNotify": "محصولات شما در سبد خرید منتظر تکمیل خرید هستند.",
+      "empty": "شما هیچ اعلانی ندارید.",
+      "title": "اعلانات"
+    },
+    "sidebar": {
+      "account": "حساب کاربری",
+      "addresses": "نشانی‌ها",
+      "cart": "سبد خرید",
+      "comments": "دیدگاه‌ها",
+      "dashboard": "خلاصه فعالیت",
+      "exit": "خروج",
+      "invoices": "سفارشات",
+      "transactions": "تراکنش‌ها"
+    }
+  },
+  "status": "وضعیت",
+  "supportBox": {
+    "description": "7 روز هفته، 24 ساعته پاسخگوی شما هستیم",
+    "title": "تلفن پشتیبانی"
+  },
+  "titles": {
+    "footer": {
+      "contacts": "راه‌های ارتباطی",
+      "logos": "لوگوها",
+      "quickAccess": "دسترسی سریع"
+    }
+  },
+  "transactions": {
+    "authority": "شناسه پرداخت",
+    "coupon": "تخفیف",
+    "date": "تاریخ ثبت تراکنش",
+    "description": "توضیحات",
+    "id": "شناسه تراکنش",
+    "payDate": "تاریخ پرداخت تراکنش",
+    "price": "هزینه (تومان)",
+    "relatedInvoice": "مشاهده سفارش مرتبط با این تراکنش",
+    "title": "تراکنش‌ها"
+  }
+}

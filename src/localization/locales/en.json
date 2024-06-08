@@ -1,0 +1,299 @@
+{
+  "about": {
+    "subtitle": "Know Us Better",
+    "title": "Our Story"
+  },
+  "app": {
+    "cta": "Our Services",
+    "description": "App Description",
+    "keywords": "App Keyworkds",
+    "name": "FibDesign",
+    "ogDescription": "App Description",
+    "ogTitle": "FibDesign",
+    "secondaryCta": "services",
+    "subName": "subname"
+  },
+  "articles": {
+    "description": "our articles",
+    "details": {
+      "category": "category",
+      "fastAccess": {
+        "files": "Files",
+        "gallery": "Gallery",
+        "title": "Fast Access",
+        "videos": "Videos"
+      },
+      "publishedAt": "published at",
+      "readingTime": "reading time",
+      "time": "{time} minuts",
+      "title": "Details",
+      "visitCount": "visits"
+    },
+    "relatedArticles": "related articles",
+    "tags": "tags",
+    "title": "Articles"
+  },
+  "auth": {
+    "email": "Email",
+    "firstName": "Name",
+    "forgotPassword": "Forgot your password?",
+    "forgotPasswordSubTitle": "Next you'll recieve a 6 digits OTP code",
+    "forgotPasswordTitle": "Password Recovery",
+    "lastName": "Last Name",
+    "loginBtn": "Login",
+    "loginTitle": "Login",
+    "otpShortTitle": "OTP",
+    "otpSubTitle": "Code sent to {phone}",
+    "otpTitle": "Enter OTP code",
+    "password": "Password",
+    "passwordConfirmation": "Password Confirmation",
+    "phone": "phone",
+    "registerBtn": "Register",
+    "registerShotTitle": "Register",
+    "registerTitle": "Register",
+    "tryLogin": "Registered before? Try Login.",
+    "tryRegister": "Not a user? Try Register."
+  },
+  "btns": {
+    "add": "Add",
+    "all": "All",
+    "back": "Back",
+    "delete": "Delete",
+    "edit": "Edit",
+    "more": "more",
+    "moreLabel": "read more about {title}",
+    "new": "Add new {title}",
+    "send": "ارسال"
+  },
+  "captcha": {
+    "sum": "Math Sum"
+  },
+  "cart": {
+    "discount": "off"
+  },
+  "cartBox": {
+    "products": "total of products",
+    "profit": "profit",
+    "shipping": "shipping",
+    "tax": "tax",
+    "total": "total"
+  },
+  "categories": {
+    "title": "categories"
+  },
+  "checkout": {
+    "pay": "pay",
+    "title": "pay invoice"
+  },
+  "clients": {
+    "title": "Clients Reviews"
+  },
+  "comments": {
+    "beFirst": "Be first to add a comment",
+    "form": {
+      "content": "comment content",
+      "rate": "rate",
+      "terms": {
+        "first": "adding new comment means you agrie with",
+        "second": "Terms of"
+      },
+      "title": "your comment"
+    },
+    "guest": "Guest",
+    "login": "To add new comment please login or register",
+    "noComments": "no comments",
+    "title": "comments"
+  },
+  "contacts": {
+    "email": "info{'@'}zrvantrade.com",
+    "form": {
+      "content": "Content",
+      "email": "Email",
+      "name": "Full Name",
+      "phone": "Phone"
+    },
+    "instagram": "{'@'}zrvantrade",
+    "location": "Mashhad, Khorsan razavai",
+    "location2": "Mashhad, Khorsan razavai",
+    "phone": "09396665800",
+    "phone2": "09396666310"
+  },
+  "copyRights": "  © All Rights Reserved - {year}",
+  "count": "item",
+  "coupon": {
+    "btn": "Apply",
+    "title": "Coupon"
+  },
+  "details": "deatils",
+  "developer": "Developed by: Fibonacci",
+  "homeTrustCards": {
+    "authenticity": {
+      "subtitle": "Providing quality products",
+      "title": "Guarantee of product authenticity"
+    },
+    "paymentProtection": {
+      "subtitle": "Secure payment gateway",
+      "title": "Secure payment"
+    },
+    "shovel": {
+      "subtitle": "Direct from the farm to the buyer",
+      "title": "Purchase from the manufacturer"
+    },
+    "truck": {
+      "subtitle": "Shipping by Priority Mail",
+      "title": "Shipping to the whole country"
+    }
+  },
+  "invoices": {
+    "date": "Created Date",
+    "id": "ID",
+    "invoice": "Invoice",
+    "location": "Location",
+    "pay": "Checkout",
+    "price": "total price",
+    "products": "Products",
+    "shippingTime": "shipping time",
+    "title": "Invocies"
+  },
+  "locale": {
+    "en": "English",
+    "fa": "Persian"
+  },
+  "location": {
+    "locating": "Locating",
+    "newLocation": "New Location"
+  },
+  "navigation": {
+    "about": "About Us",
+    "articles": "Articles",
+    "contact": "Contact Us",
+    "home": "Home",
+    "privacy": "Privacy",
+    "products": "Products",
+    "terms": "Terms and Conditions"
+  },
+  "packages": {
+    "select": {
+      "noOptions": "No Options",
+      "noResult": "No Result"
+    }
+  },
+  "pagination": {
+    "next": "next",
+    "prev": "prev"
+  },
+  "paymentResult": {
+    "backHome": "Back To Home",
+    "filed": "Faild",
+    "invoices": "Invoices",
+    "retry": "Retry",
+    "successful": "Successfull",
+    "support": "Contact Support",
+    "transactionId": "Transaction Id",
+    "transactions": "Transactions"
+  },
+  "price": "{price} Toman",
+  "priceSymbol": "Toman",
+  "products": {
+    "addToCart": "Add to cart",
+    "attributes": "Details",
+    "commentsRate": "{count} users rate",
+    "description": "Description",
+    "files": "Files",
+    "free": "Free",
+    "limitedStorage": "{count} remaning in storage",
+    "metaDescription": "Buy new products",
+    "outStock": "out of stock",
+    "quantity": "{count} item",
+    "relatedProducts": "Similar products",
+    "seeInCart": "See Product in Cart",
+    "title": "Products"
+  },
+  "profile": {
+    "addresses": {
+      "address": "Address",
+      "create": {
+        "title": "New Address"
+      },
+      "edit": {
+        "title": "Update Address"
+      },
+      "empty": "You don't have any addresses",
+      "form": {
+        "address": {
+          "label": "Address",
+          "placeholder": "St. one, B221"
+        },
+        "city": {
+          "label": "City",
+          "placeholder": "Choose a City"
+        },
+        "location": {
+          "currentLocation": "Location",
+          "edit": "Edit Location",
+          "label": "Choose your location"
+        },
+        "phone": {
+          "label": "phone",
+          "placeholder": "exaple: 091500000000"
+        },
+        "province": {
+          "label": "Province",
+          "placeholder": "Choose Your Province"
+        },
+        "receiver": {
+          "label": "Reciever Name",
+          "placeholder": "example: John Doe"
+        },
+        "title": {
+          "label": "Title",
+          "placeholder": "example: My Home"
+        },
+        "zip": {
+          "label": "Zip Code",
+          "placeholder": "example: 938234"
+        }
+      }
+    },
+    "menu": "Menu",
+    "notifications": {
+      "accountNotify": "To ptovide services, Please complete your user information",
+      "cartNotify": "Your Products waitng in Cart for you",
+      "empty": "No Notifications",
+      "title": "Notifications"
+    },
+    "sidebar": {
+      "account": "Account",
+      "addresses": "Addresses",
+      "cart": "Cart",
+      "comments": "Comments",
+      "dashboard": "Dashboard",
+      "exit": "Exit",
+      "invoices": "Invoices",
+      "transactions": "Transactions"
+    }
+  },
+  "status": "Status",
+  "supportBox": {
+    "description": "24/7 Support",
+    "title": "Suppot"
+  },
+  "titles": {
+    "footer": {
+      "contacts": "Contact",
+      "logos": "Logos",
+      "quickAccess": "Links"
+    }
+  },
+  "transactions": {
+    "authority": "Authority",
+    "coupon": "Coupon",
+    "date": "Transaction Date",
+    "description": "Description",
+    "id": "Transaction Id",
+    "payDate": "Transaction Pay Date",
+    "price": "Price",
+    "relatedInvoice": "See related invocie",
+    "title": "Transactions"
+  }
+}

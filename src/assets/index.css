@@ -1,0 +1,175 @@
+@import "fib-maxup/css/index.css";
+@import "./Webfonts/style.css";
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+:root {
+  color-scheme: light dark;
+  --primary-color: #F7B918;
+  --primary-color-light: #ffeab6;
+  --primary-color-dark: #F7B918;
+  --primary-color-text: #3a3a46;
+  --secondary-color: #94B432;
+  --secondary-color-light: #d8ed92;
+  --secondary-color-dark: #94B432;
+  --secondary-color-text: #3a3a46;
+}
+
+.light {
+  --background: #FAFAFA;
+  --paper: #FFFFFF;
+  --text-primary: #000000;
+  --text-secondary: #7D7D7D;
+  --text-disabled: #B1B1B1;
+  --divider: #E6E6E6;
+  --shadow: 0px 18.493389129638672px 39.6066780090332px 0px #00000012;
+  --shadow-light: 0px 0px 30.100000381469727px 0px #00000008;
+  --footer: #181818;
+  --footer-text: #ffffff;
+}
+
+.dark {
+  --background: #3A3A46;
+  --paper: #494c5a;
+  --text-primary: #ffffff;
+  --text-secondary: #909099;
+  --text-disabled: #3D3D49;
+  --divider: #70707A;
+  --shadow: 0px 18.493389129638672px 39.6066780090332px 0px #00000012;
+  --shadow-light: 0px 0px 30.100000381469727px 0px #00000008;
+}
+
+:root, body {
+  --custom-btn-bg: var(--primary-color);
+  --custom-btn-bg-active: var(--primary-color-dark);
+  --custom-btn-color: var(--primary-color-text);
+  --custom-btn-color-active: var(--primary-color-text);
+  --custom-btn-bg-secondary: var(--secondary-color);
+  --custom-btn-bg-active-secondary: var(--secondary-color-dark);
+  --custom-btn-color-secondary: var(--secondary-color-text);
+  --custom-btn-color-active-secondary: var(--secondary-color-text);
+  --custom-table-th-bg: var(--primary-color);
+  color: var(--text-primary);
+  background-color: var(--background);
+}
+
+:root {
+  --ms-bg: var(--background);
+  --ms-bg-disabled: var(--paper);
+  --ms-placeholder-color: var(--text-secondary);
+  --ms-spinner-color: var(--secondary-color);
+  --ms-caret-color: var(--secondary-color);
+  --ms-clear-color: var(--color-danger);
+  --ms-clear-color-hover: var(--color-danger);
+  --ms-dropdown-bg: var(--background);
+  --ms-option-bg-pointed: var(--primary-color);
+  --ms-option-color-pointed: var(--primary-color-text);
+  --ms-option-bg-selected: var(--secondary-color);
+  --ms-option-color-selected:var(--secondary-color-text);
+  --ms-option-bg-selected-pointed: var(--color-danger);
+  --ms-option-color-selected-pointed: #FFFFFF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color) !important;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--primary-color) !important;
+}
+
+@supports (scrollbar-width: thin) {
+  * {
+    scrollbar-color: var(--primary-color) transparent !important;
+  }
+}
+hr {
+  border-color: var(--divider);
+}
+
+.App {
+  min-height: 100vh;
+  color: var(--text-primary);
+  background-color: var(--background);
+  position: relative;
+  z-index: 1;
+}
+@supports (min-height: 100dvh) {
+  .App {
+    min-height: 100dvh;
+  }
+}
+
+.app-text-primary {
+  color: var(--text-primary) !important;
+}
+.app-text-secondary {
+  color: var(--text-secondary) !important;
+}
+.app-text-disabled {
+  color: var(--text-disabled) !important;
+}
+.app-color-primary {
+  color: var(--primary-color) !important;
+}
+.app-color-on-primary {
+  color: var(--primary-color-text) !important;
+}
+.app-color-secondary {
+  color: var(--secondary-color) !important;
+}
+.app-color-on-secondary {
+  color: var(--secondary-color-text) !important;
+}
+.app-bg-paper {
+  background-color: var(--paper) !important;
+}
+.app-bg-primary {
+  background-color: var(--primary-color) !important;
+}
+.app-bg-primary-light {
+  background-color: var(--primary-color-light) !important;
+}
+.app-bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+.app-bg-secondary-light {
+  background-color: var(--secondary-color-light) !important;
+}
+.app-bg-background {
+  background-color: var(--background) !important;
+}
+.app-shadow {
+  box-shadow: var(--shadow);
+}
+.app-shadow-light {
+  box-shadow: var(--shadow-light);
+}
+.app-hover-primary:hover {
+  color: var(--primary-color) !important;
+}
+.app-hover-secondary:hover {
+  background-color: var(--secondary-color) !important;
+}
+
+.divider-border {
+  border: solid 1px var(--divider);
+}
+
+.primary-border {
+  border: solid 1px var(--primary-color);
+}
+
+.secondary-border {
+  border: solid 1px var(--secondary-color);
+}
+
+:root {
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=index.css.map */

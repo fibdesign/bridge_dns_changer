@@ -1,0 +1,111 @@
+import {join} from 'path';
+import {app, BrowserWindow, contextBridge, dialog, ipcMain, ipcRenderer, shell} from 'electron';
+import { exec } from 'child_process';
+
+const isDev = process.env.npm_lifecycle_event === "app:dev";
+
+async function handleFileOpen() {
+    const { canceled, filePaths } = await dialog.showOpenDialog({ title: "Open File" })
+    if (!canceled) {
+        return filePaths[0]
+    }
+}
+
+function createWindow() {
+    // Create the browser window.
+
+
+    const mainWindow = new BrowserWindow({
+        width: 400,
+        height: 700,
+        title: 'DNS Changer',
+        center: true,
+        resizable: false,
+        webPreferences: {
+            nodeIntegration: true,
+            preload: join(__dirname, './preload.js'),
+        },
+    });
+    mainWindow.setMenu(null)
+
+    if (isDev) {
+        mainWindow.loadURL('http://localhost:5173');
+        // mainWindow.webContents.openDevTools();
+    } else {
+        mainWindow.loadFile(join(__dirname, '../../../index.html'));
+        // mainWindow.webContents.openDevTools();
+    }
+}
+
+app.whenReady().then(() => {
+    ipcMain.handle('dialog:openFile', handleFileOpen)
+    ipcMain.on('change-dns', (event, args) => {
+        const { primaryDns, secondaryDns } = args;
+
+        const command1 = `netsh interface ipv4 set dnsservers name="Wi-Fi" static ${primaryDns} primary`;
+        const command2 = `netsh interface ipv4 add dnsservers name="Wi-Fi" ${secondaryDns} index=2`;
+        const command3 = 'ipconfig /flushdns';
+
+        exec(command1, (error1, stdout1, stderr1) => {
+            if (error1) {
+                console.error('Error running command 1:', error1);
+                return;
+            }
+            console.log('Command 1 output:', stdout1);
+
+            exec(command2, (error2, stdout2, stderr2) => {
+                if (error2) {
+                    console.error('Error running command 2:', error2);
+                    return;
+                }
+                console.log('Command 2 output:', stdout2);
+
+                exec(command3, (error3, stdout3, stderr3) => {
+                    if (error3) {
+                        console.error('Error running command 3:', error3);
+                        return;
+                    }
+                    console.log('Command 3 output:', stdout3);
+                    // Handle successful execution (optional)
+                });
+            });
+        });
+    });
+    ipcMain.on('clear-dns', (event) => {
+
+        const command1 = `netsh interface ipv4 set dns name="Wi-Fi" dhcp`;
+        const command2 = `ipconfig /flushdns`;
+
+        exec(command1, (error1, stdout1, stderr1) => {
+            if (error1) {
+                console.error('Error running command 1:', error1);
+                return;
+            }
+            console.log('Command 1 output:', stdout1);
+
+            exec(command2, (error2, stdout2, stderr2) => {
+                if (error2) {
+                    console.error('Error running command 2:', error2);
+                    return;
+                }
+                console.log('Command 2 output:', stdout2);
+            });
+        });
+    });
+    ipcMain.on('open-link', (event,url:string) => {
+        shell.openExternal(url)
+    });
+    createWindow()
+    app.on('activate', function () {
+        // On macOS it's common to re-create a window in the app when the
+        // dock icon is clicked and there are no other windows open.
+        if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    })
+
+});
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
