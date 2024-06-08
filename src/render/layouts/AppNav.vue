@@ -4,7 +4,7 @@
       <iconify-icon icon="ion:grid-outline"/>
     </button>
     <p>{{ $t('app.name') }}</p>
-    <button class="icon" title="حمایت مالی">
+    <button class="icon" title="حمایت مالی" @click="openDonateLink">
       <iconify-icon icon="ion:heart" class="f-danger"/>
     </button>
   </nav>
@@ -18,6 +18,10 @@ const store = useAppStore()
 
 const open = () => {
   store.toggleDrawer(true)
+}
+
+const openDonateLink = () => {
+  (window as any).ipcRenderer.send('open-link', 'https://fibdesign.ir/fa/donate')
 }
 </script>
 
