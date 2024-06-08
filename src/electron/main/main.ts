@@ -1,21 +1,18 @@
 import {join} from 'path';
-import {app, BrowserWindow, contextBridge, dialog, ipcMain, ipcRenderer, shell} from 'electron';
-import { exec } from 'child_process';
+import {app, BrowserWindow, dialog, ipcMain, shell} from 'electron';
+import {exec} from 'child_process';
 import {EVENTS_KEYS} from "../utils/EVENTS_KEYS";
 
 const isDev = process.env.npm_lifecycle_event === "app:dev";
 
 async function handleFileOpen() {
-    const { canceled, filePaths } = await dialog.showOpenDialog({ title: "Open File" })
+    const {canceled, filePaths} = await dialog.showOpenDialog({title: "Open File"})
     if (!canceled) {
         return filePaths[0]
     }
 }
 
 function createWindow() {
-    // Create the browser window.
-
-
     const mainWindow = new BrowserWindow({
         width: 400,
         height: 700,
@@ -31,17 +28,16 @@ function createWindow() {
 
     if (isDev) {
         mainWindow.loadURL('http://localhost:5173');
-        // mainWindow.webContents.openDevTools();
     } else {
         mainWindow.loadFile(join(__dirname, '../../../index.html'));
-        // mainWindow.webContents.openDevTools();
     }
+    // mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
     ipcMain.handle('dialog:openFile', handleFileOpen)
     ipcMain.on(EVENTS_KEYS.CHANGE_DNS, (event, args) => {
-        const { primaryDns, secondaryDns } = args;
+        const {primaryDns, secondaryDns} = args;
 
         const command1 = `netsh interface ipv4 set dnsservers name="Wi-Fi" static ${primaryDns} primary`;
         const command2 = `netsh interface ipv4 add dnsservers name="Wi-Fi" ${secondaryDns} index=2`;
@@ -93,13 +89,11 @@ app.whenReady().then(() => {
             });
         });
     });
-    ipcMain.on(EVENTS_KEYS.OPEN_LINK, (event,url:string) => {
+    ipcMain.on(EVENTS_KEYS.OPEN_LINK, (event, url: string) => {
         shell.openExternal(url)
     });
     createWindow()
     app.on('activate', function () {
-        // On macOS it's common to re-create a window in the app when the
-        // dock icon is clicked and there are no other windows open.
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
 
