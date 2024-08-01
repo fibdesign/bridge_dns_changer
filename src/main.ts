@@ -8,6 +8,7 @@ import type {Vue3TouchEventsOptions} from "vue3-touch-events";
 import Vue3TouchEvents from "vue3-touch-events";
 
 import '@/render/assets/index.css'
+import '@/render/config/AxiosConfig'
 
 const pinia = createPinia();
 

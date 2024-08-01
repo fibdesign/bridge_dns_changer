@@ -1,11 +1,23 @@
 import {createRouter, createWebHistory} from "vue-router";
-import Home from "@/render/views/Home.vue";
+import HomeView from "@/render/views/HomeView.vue";
+import UrlCheckerView from "@/render/views/UrlCheckerView.vue";
+import ServersView from "@/render/views/ServersView.vue";
 
 const routes = [
     {
         path: "/",
         name: "home",
-        component: Home,
+        component: HomeView,
+    },
+    {
+        path: "/url-checker",
+        name: "urlChecker",
+        component: UrlCheckerView,
+    },
+    {
+        path: "/servers",
+        name: "servers",
+        component: ServersView,
     },
 ];
 

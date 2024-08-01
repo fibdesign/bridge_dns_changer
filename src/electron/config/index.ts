@@ -1,10 +1,10 @@
 import {join} from "path";
 
 const config = {
-    port: 5173,
+    port: 2003,
 
     window: {
-        width: 400,
+        width: 1000,
         height: 700,
         title: 'DNS Changer',
         center: true,

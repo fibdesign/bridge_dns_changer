@@ -1,8 +1,8 @@
 <template>
   <div :class="{'active': isActive}" class="column-c">
     <div class="p-rel">
-      <button class="row-c">
-        <iconify-icon icon="ion:power"/>
+      <button class="row-c" :class="{'loading': loading}">
+        <iconify-icon :icon="loading ? `line-md:loading-loop` : `ion:power`"/>
       </button>
       <span v-for="index in 3" :class="`c-${index}`"></span>
     </div>
@@ -23,7 +23,8 @@
 import IconifyIcon from "@/render/components/app/IconifyIcon.vue";
 
 defineProps<{
-  isActive: boolean
+  isActive: boolean,
+  loading: boolean,
 }>()
 </script>
 
@@ -55,7 +56,7 @@ button{
   background-color: var(--paper);
   padding: unset;
 
-  &:hover{
+  &:hover, &.loading{
     animation: pulse infinite 1.5s;
     ~ span{
       &.c-1{

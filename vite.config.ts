@@ -16,11 +16,12 @@ export default defineConfig({
     server: {
         hmr: {
             overlay: false
-        }
+        },
+        port: 2003
     },
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
         }
-    }
+    },
 })

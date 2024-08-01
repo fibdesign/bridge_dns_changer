@@ -7,7 +7,7 @@
     "cta": "Our Services",
     "description": "App Description",
     "keywords": "App Keyworkds",
-    "name": "FibDesign",
+    "name": "Bridge",
     "ogDescription": "App Description",
     "ogTitle": "FibDesign",
     "secondaryCta": "services",
@@ -167,6 +167,11 @@
     "about": "About Us",
     "articles": "Articles",
     "contact": "Contact Us",
+    "footer": {
+      "home": "Home",
+      "servers": "Servers",
+      "urlChecker": "Test"
+    },
     "home": "Home",
     "privacy": "Privacy",
     "products": "Products",

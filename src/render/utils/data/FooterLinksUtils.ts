@@ -1,31 +1,18 @@
 const FooterLinksUtils = [
     {
         to: {name: 'home'},
-        title: 'navigation.home'
+        title: 'navigation.footer.home',
+        icon: 'ion:home',
     },
     {
-        to: {name: 'products'},
-        title: 'navigation.products'
+        to: {name: 'servers'},
+        title: 'navigation.footer.servers',
+        icon: 'ion:server',
     },
-    {
-        to: {name: 'articles'},
-        title: 'navigation.articles'
-    },
-    {
-        to: {name: 'about'},
-        title: 'navigation.about'
-    },
-    {
-        to: {name: 'contact'},
-        title: 'navigation.contact'
-    },
-    {
-        to: {name: 'privacy'},
-        title: 'navigation.privacy'
-    },
-    {
-        to: {name: 'terms'},
-        title: 'navigation.terms'
-    },
+    // {
+    //     to: {name: 'urlChecker'},
+    //     title: 'navigation.footer.urlChecker',
+    //     icon: 'ion:globe-outline',
+    // },
 ]
 export default FooterLinksUtils
