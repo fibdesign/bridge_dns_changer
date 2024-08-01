@@ -1,8 +1,8 @@
 {
   "name": "dns_changer",
   "private": true,
-  "version": "0.0.5",
-  "author": "Your Name",
+  "version": "0.0.6",
+  "author": "Sadegh Ghaderi",
   "main": "dist/electron/electron/main/main.js",
   "scripts": {
     "vite:dev": "vite",

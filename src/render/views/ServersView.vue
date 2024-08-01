@@ -45,10 +45,9 @@ import IconifyIcon from "@/render/components/app/IconifyIcon.vue";
 import {EVENTS_KEYS} from "@/electron/utils/EVENTS_KEYS";
 import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
-import useLocalization from "@/render/services/useLocalization";
 
 const serversStore = useServersStore()
-const {selectedServer, servers} = storeToRefs(serversStore)
+const {servers} = storeToRefs(serversStore)
 
 const currentCat = ref<any>()
 
@@ -56,7 +55,11 @@ const router = useRouter()
 const setServer = (id: number) => {
   serversStore.selectServer(id);
   (window as any).ipcRenderer.send(EVENTS_KEYS.CLEAR_DNS)
-  router.push(useLocalization.i18nRoute({name: 'home'}))
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth"
+  })
 }
 
 onMounted(async () => {
@@ -66,9 +69,22 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 
+.box{
+  transition: 0.2s ease-in-out;
+  &:hover{
+    background-color: var(--primary-color);
+    *{
+      color: var(--primary-color-text)!important;
+    }
+  }
+}
 .dns-logo{
   width: 30px;
   height: 30px;
   object-fit: contain;
+}
+.subtitle{
+  font-size: 0.7rem;
+  line-height: 0.5rem;
 }
 </style>

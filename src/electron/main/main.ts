@@ -1,7 +1,7 @@
 import {join} from 'path';
 import {app, BrowserWindow, ipcMain} from 'electron';
 import {EVENTS_KEYS} from "../utils/EVENTS_KEYS";
-import config from '../config';
+import config, {IS_DEV} from '../config';
 import {openLinkEvent} from "../events/openLinkEvent";
 import {clearDnsEvent} from "../events/clearDnsEvent";
 import {changeDnsEvent} from "../events/changeDnsEvent";
@@ -19,7 +19,7 @@ function createWindow() {
     } else {
         mainWindow.loadFile(join(__dirname, '../../../index.html'));
     }
-    mainWindow.webContents.openDevTools();
+    if (IS_DEV) mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {

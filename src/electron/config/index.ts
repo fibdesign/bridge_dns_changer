@@ -1,10 +1,12 @@
 import {join} from "path";
 
+export const IS_DEV = false;
+
 const config = {
     port: 2003,
 
     window: {
-        width: 1000,
+        width: IS_DEV ? 1000 : 400,
         height: 700,
         title: 'DNS Changer',
         center: true,
