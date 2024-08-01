@@ -23,9 +23,9 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-    ipcMain.on(EVENTS_KEYS.CHANGE_DNS,changeDnsEvent);
     ipcMain.on(EVENTS_KEYS.CLEAR_DNS, clearDnsEvent);
     ipcMain.on(EVENTS_KEYS.OPEN_LINK, openLinkEvent);
+    ipcMain.handle(EVENTS_KEYS.CHANGE_DNS, changeDnsEvent);
     ipcMain.handle(EVENTS_KEYS.CHECK_DNS, checkDnsEvent);
     ipcMain.handle(EVENTS_KEYS.GET_ADAPTERS, getAdaptersEvent);
     createWindow()

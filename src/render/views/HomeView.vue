@@ -50,11 +50,13 @@ const activate = async () => {
     (window as any).ipcRenderer.send(EVENTS_KEYS.CLEAR_DNS)
     active.value = false
   }else{
-    (window as any).ipcRenderer.send(EVENTS_KEYS.CHANGE_DNS, {
+    loading.value = true
+    await (window as any).ipcRenderer.invoke(EVENTS_KEYS.CHANGE_DNS, {
       primaryDns: selectedServer.value?.dns1 ?? '',
       secondaryDns: selectedServer.value?.dns2 ?? '',
       adaptor: adapter.value
     });
+    loading.value = false
     active.value = true
   }
 }
