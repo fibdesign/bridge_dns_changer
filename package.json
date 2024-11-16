@@ -1,8 +1,9 @@
 {
   "name": "dns_changer",
   "private": true,
-  "version": "0.0.6",
-  "author": "Sadegh Ghaderi",
+  "version": "0.0.8",
+  "author": "FibDesign",
+  "description": "DNS Changer",
   "main": "dist/electron/electron/main/main.js",
   "scripts": {
     "vite:dev": "vite",
@@ -16,8 +17,10 @@
     "app:preview": "npm run vite:build && tsc && electron ."
   },
   "build": {
-    "appId": "ir.fibdesign.dnschanger",
+    "productName": "Bridge",
+    "appId": "ir.fibdesign.bridge",
     "compression": "maximum",
+    "copyright": "Copyright © 2024 FibDesign",
     "asar": true,
     "directories": {
       "buildResources": "assets",
@@ -27,7 +30,7 @@
       "dist"
     ],
     "mac": {
-      "artifactName": "${productName}_${version}.${ext}",
+      "artifactName": "${productName}.${version}[fibdesign.ir].${ext}",
       "target": [
         "dmg"
       ]
@@ -42,13 +45,20 @@
         }
       ],
       "artifactName": "${productName}.${version}[fibdesign.ir].${ext}",
-      "requestedExecutionLevel": "requireAdministrator"
+      "requestedExecutionLevel": "requireAdministrator",
+      "icon": "./dist/icon.ico"
     },
     "nsis": {
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
-      "deleteAppDataOnUninstall": false
+      "deleteAppDataOnUninstall": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Bridge",
+      "menuCategory": "FibDesign",
+      "installerHeaderIcon": "./dist/fibdesign.ico",
+      "installerIcon": "./dist/icon.ico"
     }
   },
   "dependencies": {

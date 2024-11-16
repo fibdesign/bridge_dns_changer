@@ -17,7 +17,7 @@ export const serversList:ServerModel[] = [
         image: 'images/logo-begzar.png',
         dns1: '185.55.226.26',
         dns2: '185.55.225.25',
-        types: ['AI','Public']
+        types: ['Public']
     },
     {
         id: 3,
@@ -35,7 +35,7 @@ export const serversList:ServerModel[] = [
         image: 'images/logo-electrotm.png',
         dns1: '78.157.42.100',
         dns2: '78.157.42.101',
-        types: ['Gaming']
+        types: ['AI','Gaming']
     },
     {
         id: 5,
@@ -53,7 +53,7 @@ export const serversList:ServerModel[] = [
         image: 'images/logo-hostiran.png',
         dns1: '172.29.2.100',
         dns2: '172.29.0.100',
-        types: ['AI','Public']
+        types: ['Public']
     },
     {
         id: 7,
