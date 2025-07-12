@@ -1,6 +1,6 @@
 const NavbarLinksUtils = [
     {
-        to: 'https://fibdesign.ir/fa',
+        to: 'https://bridge.fibdesign.ir/fa',
         title: 'navigation.home'
     },
     {
