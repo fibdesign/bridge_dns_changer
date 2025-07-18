@@ -55,11 +55,6 @@ const router = useRouter()
 const setServer = (id: number) => {
   serversStore.selectServer(id);
   (window as any).ipcRenderer.send(EVENTS_KEYS.CLEAR_DNS)
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "smooth"
-  })
 }
 
 onMounted(async () => {

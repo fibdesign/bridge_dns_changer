@@ -27,7 +27,27 @@ export const menuItems:(Electron.MenuItemConstructorOptions | Electron.MenuItem)
             { label: 'محصولات دیگر', click: () => shell.openExternal('https://fibdesign.ir')},
             { label: 'ارتباط با ما', click: () => shell.openExternal('https://fibdesign.ir/fa/contact-us')},
             {type: 'separator'},
-            { label: 'درباره ما' },
+            {
+                label: 'کانال تلگرام',
+                click: () => {
+                    const telegramDesktopURL = 'tg://resolve?domain=bridge_dns';
+                    const telegramWebURL = 'https://t.me/bridge_dns';
+
+                    shell.openExternal(telegramDesktopURL).catch(() => {
+                        // Fallback to web if desktop app not available
+                        shell.openExternal(telegramWebURL);
+                    });
+                }
+            },
+            {
+                label: 'درباره ما',
+                click: (menuItem, browserWindow) => {
+                    if (browserWindow) {
+                        browserWindow.webContents.send('open-about-modal');
+                    }
+                }
+            },
+            {type: 'separator'},
             {
                 label: 'بررسی بروزرسانی',
                 click: () => {

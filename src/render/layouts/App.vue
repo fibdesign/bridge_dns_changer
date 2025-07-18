@@ -2,6 +2,7 @@
   <div class="App" :class="`${theme} ${rtlClass}`" :dir="rtlClass ? 'rtl' : 'ltr'">
 <!--    <app-nav/>-->
     <app-drawer/>
+    <about-modal v-model="aboutModal" />
     <main class="row align-stretch">
       <div class="xcol-info-spaced app-bg-paper order-2">
         <servers-view/>
@@ -64,12 +65,13 @@ import AppDrawer from "@/render/layouts/AppDrawer.vue";
 import {useI18n} from "vue-i18n";
 import useAppStore from "@/render/store/AppStore";
 import {storeToRefs} from "pinia";
-import {computed, onBeforeMount, onMounted, ref} from "vue";
+import {computed, onBeforeMount, onBeforeUnmount, onMounted, ref} from "vue";
 import ActiveButton from "@/render/components/ActiveButton.vue";
 import useServersStore from "@/render/store/ServersStore";
 import {EVENTS_KEYS} from "@/electron/utils/EVENTS_KEYS";
 import ServersView from "@/render/views/ServersView.vue";
 import IconifyIcon from "@/render/components/app/IconifyIcon.vue";
+import AboutModal from "@/render/components/AboutModal.vue";
 import type {ProgressInfo} from "electron-updater";
 
 const {locale} = useI18n()
@@ -161,11 +163,19 @@ onBeforeMount(() => {
   getIpv6Status()
 })
 
+const aboutModal = ref(false)
+function handleOpenAbout() {
+  aboutModal.value = true
+}
 
 onMounted(async () => {
   serversStore.getServers();
   checkCurrentDns();
   getAdaptersList();
+  (window as any).ipcRenderer.on('open-about-modal', handleOpenAbout)
+})
+onBeforeUnmount(() => {
+  (window as any).ipcRenderer.removeListener('open-about-modal', handleOpenAbout)
 })
 </script>
 <style lang="scss" scoped>
