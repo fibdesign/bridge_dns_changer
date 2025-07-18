@@ -1,25 +1,28 @@
-import {exec} from "child_process";
+import { exec } from 'child_process';
+import util from 'util';
 
-export const getAdaptersEvent = async () => {
-    const command:string = 'wmic nic get NetConnectionID';
+const execAsync = util.promisify(exec);
 
-    return await new Promise((resolve, reject) => {
-        exec(command, (error, stdout, stderr) => {
-            if (error) {
-                console.error('Error getting DNS for adapter:', error);
-                return reject(error);
-            }
+export const getAdaptersEvent = async (): Promise<string[]> => {
+    const command = 'wmic nic where "NetEnabled=true" get NetConnectionID';
 
-            return resolve(parseAdaptersConfig(stdout));
-        });
-    });
-
-
-    function parseAdaptersConfig(text:string) {
-        const res = text.replaceAll('\r', '').split('\n')
-        let _list = [...new Set(res)]
-        _list = _list.map(_item => _item.replace(/\s+/g,' ').trim())
-        _list = _list.filter(_item => !!_item)
-        return _list
+    try {
+        const { stdout } = await execAsync(command);
+        const adapters = parseAdaptersConfig(stdout);
+        console.log('[Bridge] Active adapters:', adapters.length);
+        return adapters;
+    } catch (error) {
+        console.error('[Bridge] Failed to get adapters:', error);
+        return [];
     }
+};
+
+function parseAdaptersConfig(text: string): string[] {
+    return (
+        text
+            .replace(/\r/g, '')
+            .split('\n')
+            .map(line => line.trim())
+            .filter(line => line && line !== 'NetConnectionID')
+    );
 }

@@ -48,7 +48,7 @@ defineProps<{
   }
 }
 button{
-  width: 100px;
+  width: 150px;
   aspect-ratio: 1;
   border-radius: 50%!important;
   font-size: 2rem;

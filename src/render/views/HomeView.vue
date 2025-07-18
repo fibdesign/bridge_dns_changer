@@ -47,23 +47,29 @@ const adapter = ref('Wi-Fi')
 
 const activate = async () => {
   if (active.value){
-    (window as any).ipcRenderer.send(EVENTS_KEYS.CLEAR_DNS)
+    const error = await (window as any).ipcRenderer.send(EVENTS_KEYS.CLEAR_DNS, adapter.value)
+    if (error){return;}
     active.value = false
   }else{
     loading.value = true
-    await (window as any).ipcRenderer.invoke(EVENTS_KEYS.CHANGE_DNS, {
+    const error = await (window as any).ipcRenderer.invoke(EVENTS_KEYS.CHANGE_DNS, {
       primaryDns: selectedServer.value?.dns1 ?? '',
       secondaryDns: selectedServer.value?.dns2 ?? '',
       adaptor: adapter.value
     });
     loading.value = false
+    if (error){return;}
     active.value = true
   }
 }
 
 const checkCurrentDns = async () => {
   try {
-    const res = await (window as any).ipcRenderer.invoke(EVENTS_KEYS.CHECK_DNS, 'Wi-Fi');
+    const currentAdapter = await (window as any).ipcRenderer.invoke(EVENTS_KEYS.GET_ACTIVE_ADAPTER);
+    if (currentAdapter) {
+      adapter.value = currentAdapter;
+    }
+    const res = await (window as any).ipcRenderer.invoke(EVENTS_KEYS.CHECK_DNS, adapter.value);
     const currentDnsServer = servers.value.find(_server => (_server.dns1 == res?.[0] && _server.dns2 == res?.[1]));
     if(currentDnsServer) {
       serversStore.selectServer(currentDnsServer.id);

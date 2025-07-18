@@ -1,20 +1,20 @@
 <template>
   <div class="p-1">
     <div v-if="servers" >
-      <p class="text-bold">لیست سرور‌ها</p>
-      <div class="row-a gap">
+      <p class="text-bold mb-1">لیست سرور‌ها</p>
+      <div class="row-a gap mb-2">
         <div
              @click="currentCat = undefined"
-             class="app-bg-paper p-1-3 text-small pointer round-50"
-        :class="{'app-bg-primary f-dark': currentCat === undefined}">
-          همه
+             class="p-1-3 text-small pointer round-50"
+        :class="{'app-bg-primary f-dark': currentCat === undefined, 'app-bg-background': currentCat != undefined}">
+          <small>همه</small>
         </div>
         <div v-for="(type,index) in ['Gaming' , 'AI']"
              :key="index"
              @click="currentCat = currentCat === type ? undefined : type"
-             class="app-bg-paper p-1-3 text-small pointer round-50"
-             :class="{'app-bg-primary f-dark': currentCat === type}">
-          {{ type }}
+             class="p-1-3 text-small pointer round-50"
+             :class="{'app-bg-primary f-dark': currentCat === type, 'app-bg-background': currentCat != type}">
+          <small>{{ type }}</small>
         </div>
       </div>
       <div v-for="(server,index) in !currentCat ? servers : servers.filter(_s => _s.types?.includes(currentCat!))" :key="server.id" class="mt-1">

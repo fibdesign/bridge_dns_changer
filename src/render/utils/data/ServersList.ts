@@ -6,8 +6,8 @@ export const serversList:ServerModel[] = [
         title: 'شکن',
         web: 'https://shecan.ir/',
         image: 'images/logo-shecan.png',
-        dns1: '178.22.122.100',
-        dns2: '185.51.200.2',
+        dns1: '185.51.200.2',
+        dns2: '178.22.122.100',
         types: ['AI','Public']
     },
     {
@@ -54,6 +54,15 @@ export const serversList:ServerModel[] = [
         dns1: '172.29.2.100',
         dns2: '172.29.0.100',
         types: ['Public']
+    },
+    {
+        id: 8,
+        title: 'لگ زیرو',
+        web: 'https://lagzerotm.com/',
+        image: 'https://lagzerotm.com/wp-content/uploads/2025/04/upscalemedia-transformed-2048x2048.png',
+        dns1: '95.38.132.152',
+        dns2: '95.38.132.153',
+        types: ['Public','Gaming','AI']
     },
     {
         id: 7,

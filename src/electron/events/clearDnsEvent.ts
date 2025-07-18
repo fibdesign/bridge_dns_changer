@@ -1,24 +1,22 @@
 import {exec} from "child_process";
 import IpcMainEvent = Electron.IpcMainEvent;
+import util from 'util';
+const execAsync = util.promisify(exec);
 
-export const clearDnsEvent = (_event:IpcMainEvent) => {
+export const clearDnsEvent = async (_event:IpcMainEvent, adapter: string = 'Wi-Fi') => {
+    try {
+        const command1 = `netsh interface ipv4 set dns name="${adapter}" dhcp`;
+        const command2 = `ipconfig /flushdns`;
 
-    const command1 = `netsh interface ipv4 set dns name="Wi-Fi" dhcp`;
-    const command2 = `ipconfig /flushdns`;
+        const { stdout: stdout1 } = await execAsync(command1);
+        console.log('[Bridge] DNS reset to DHCP:', stdout1.trim());
 
-    exec(command1, (error1, stdout1, stderr1) => {
-        if (error1) {
-            console.error('Error running command 1:', error1);
-            return;
-        }
-        console.log('Command 1 output:', stdout1);
+        const { stdout: stdout2 } = await execAsync(command2);
+        console.log('[Bridge] DNS cache flushed:', stdout2.trim());
 
-        exec(command2, (error2, stdout2, stderr2) => {
-            if (error2) {
-                console.error('Error running command 2:', error2);
-                return;
-            }
-            console.log('Command 2 output:', stdout2);
-        });
-    });
+        return true;
+    } catch (error) {
+        console.error('[Bridge] Failed to clear DNS:', error);
+        return false;
+    }
 }

@@ -6,15 +6,16 @@ const config = {
     port: 2003,
 
     window: {
-        width: IS_DEV ? 1000 : 400,
-        height: 700,
-        title: 'DNS Changer',
+        width: 1200,
+        height: 900,
+        title: 'Bridge - DNS Changer',
         center: true,
-        resizable: false,
+        resizable: true,
         webPreferences: {
             nodeIntegration: true,
             preload: join(__dirname, '../main/preload.js'),
         },
+        icon: join(__dirname, '../../../images/logo.png'),
     }
 }
 

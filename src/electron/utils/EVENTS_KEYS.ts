@@ -5,4 +5,7 @@ export const EVENTS_KEYS = {
     CHECK_DNS: 'check-dns',
     DNS_RESULT: 'dns-result',
     GET_ADAPTERS: 'get-adapters',
+    GET_ACTIVE_ADAPTER: 'get-active-adapter',
+    TOGGLE_IPV6: 'toggle-ipv6',
+    GET_IPV6_STATUS: 'get-ipv6-status',
 }

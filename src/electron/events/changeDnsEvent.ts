@@ -1,36 +1,27 @@
 import {exec} from "child_process";
+import util from 'util';
+const execAsync = util.promisify(exec);
 
 export const changeDnsEvent =  async (_event:any, args:any) => {
-    const {primaryDns, secondaryDns, adaptor} = args;
+    const { primaryDns, secondaryDns, adaptor } = args;
 
-    const command1 = `netsh interface ipv4 set dnsservers name="${adaptor}" static ${primaryDns} primary`;
-    const command2 = `netsh interface ipv4 add dnsservers name="${adaptor}" ${secondaryDns} index=2`;
-    const command3 = 'ipconfig /flushdns';
+    try {
+        const command1 = `netsh interface ipv4 set dnsservers name="${adaptor}" static ${primaryDns} primary`;
+        const command2 = `netsh interface ipv4 add dnsservers name="${adaptor}" ${secondaryDns} index=2`;
+        const command3 = 'ipconfig /flushdns';
 
+        const { stdout: out1 } = await execAsync(command1);
+        console.log('[Bridge] Primary DNS set:', out1.trim());
 
-    return await new Promise((resolve, reject) => {
-        exec(command1, (error, stdout, stderr) => {
-            if (error) {
-                console.error('Error getting DNS for adapter:', error);
-                return reject(error);
-            }
+        const { stdout: out2 } = await execAsync(command2);
+        console.log('[Bridge] Secondary DNS added:', out2.trim());
 
-            console.log('Command 1 output:', stdout);
-        });
-        exec(command2, (error, stdout, stderr) => {
-            if (error) {
-                console.error('Error getting DNS for adapter:', error);
-                return reject(error);
-            }
-            console.log('Command 1 output:', stdout);
-        });
-        exec(command3, (error, stdout, stderr) => {
-            if (error) {
-                console.error('Error getting DNS for adapter:', error);
-                return reject(error);
-            }
-            console.log('Command 1 output:', stdout);
-        });
-        return resolve(true);
-    });
+        const { stdout: out3 } = await execAsync(command3);
+        console.log('[Bridge] DNS cache flushed:', out3.trim());
+
+        return false;
+    } catch (error) {
+        console.error('[Bridge] Failed to change DNS:', error);
+        return true;
+    }
 }
