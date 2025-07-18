@@ -1,4 +1,5 @@
 import {app, shell} from "electron";
+import {autoUpdater} from "electron-updater";
 
 export const menuItems:(Electron.MenuItemConstructorOptions | Electron.MenuItem)[] = [
     {
@@ -27,6 +28,12 @@ export const menuItems:(Electron.MenuItemConstructorOptions | Electron.MenuItem)
             { label: 'ارتباط با ما', click: () => shell.openExternal('https://fibdesign.ir/fa/contact-us')},
             {type: 'separator'},
             { label: 'درباره ما' },
+            {
+                label: 'بررسی بروزرسانی',
+                click: () => {
+                    autoUpdater.checkForUpdates();
+                }
+            }
         ]
     },
     {

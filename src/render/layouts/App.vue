@@ -2,11 +2,11 @@
   <div class="App" :class="`${theme} ${rtlClass}`" :dir="rtlClass ? 'rtl' : 'ltr'">
 <!--    <app-nav/>-->
     <app-drawer/>
-    <main class="row align-stretch hv-100">
-      <div class="xcol-info-spaced app-bg-paper">
+    <main class="row align-stretch">
+      <div class="xcol-info-spaced app-bg-paper order-2">
         <servers-view/>
       </div>
-      <div class="xcol-body-spaced column p-custom">
+      <div class="xcol-body-spaced column p-custom order-1">
         <div class="m-auto">
           <div class="row-c mt-2">
             <active-button :is-active="active" @click="activate" :loading="loading"/>
@@ -15,33 +15,33 @@
             بعد از فعال یا غیر فعال کردن، می‌توانید برنامه را کامل ببندید.
           </div>
         </div>
-        <div class="row app-bg-paper round-10">
+        <div class="row app-bg-paper round-10 currentInfoTable">
           <div class="xcol-2-2">
             <span class="text-small app-text-secondary">سرور</span>
-            <div v-if="selectedServer" class="p-1 row-a gap">
+            <div v-if="selectedServer" class="p-1-0 row-a gap">
               <img :src="selectedServer.image" class="dns-logo" alt="shecan">
-              <p>{{ selectedServer.title }}</p>
+              <p class="text-small">{{ selectedServer.title }}</p>
             </div>
           </div>
           <div class="xcol-2-2">
             <span class="text-small app-text-secondary">DNS</span>
-            <div v-if="selectedServer" class=" p-1 row-a gap ">
-              <p class="">
-                {{ selectedServer.dns1 }} - {{ selectedServer?.dns2 }}
+            <div v-if="selectedServer" class="p-1-0 row-a gap ">
+              <p class="text-small">
+                {{ selectedServer.dns1 }} <span class="app-text-secondary"> - </span> {{ selectedServer?.dns2 }}
               </p>
             </div>
           </div>
           <div class="xcol-2-2">
             <label>
               <span class="text-small app-text-secondary">نوع آداپتور</span>
-              <select class="app-bg-paper round-10 p-1 w-100 borderless" v-model="adapter">
+              <select class="app-bg-paper round-10 p-1-0 w-100 borderless" v-model="adapter">
                 <option v-for="adapter in adapters" :value="adapter">{{adapter}}</option>
               </select>
             </label>
           </div>
           <div class="xcol-2-2">
             <span class="text-small app-text-secondary">IPV6</span>
-            <label class="row-a gap text-small">
+            <label class="row-a gap text-small p-1-0">
               <iconify-icon v-if="ipv6Loading" icon="line-md:loading-loop" class="h5 ml-1"/>
               <input v-else type="checkbox" class="checkbox" v-model="ipv6" @change="toggleIpv6">
               <span>استفاده از IPV6</span>
@@ -70,6 +70,7 @@ import useServersStore from "@/render/store/ServersStore";
 import {EVENTS_KEYS} from "@/electron/utils/EVENTS_KEYS";
 import ServersView from "@/render/views/ServersView.vue";
 import IconifyIcon from "@/render/components/app/IconifyIcon.vue";
+import type {ProgressInfo} from "electron-updater";
 
 const {locale} = useI18n()
 const store = useAppStore()
@@ -160,15 +161,16 @@ onBeforeMount(() => {
   getIpv6Status()
 })
 
+
 onMounted(async () => {
   serversStore.getServers();
-  checkCurrentDns()
-  getAdaptersList()
+  checkCurrentDns();
+  getAdaptersList();
 })
 </script>
 <style lang="scss" scoped>
 main{
-  min-height: calc(700px - 70px - 60px - 20px);
+  min-height: 100vh;
 }
 .box{
   transition: 0.2s ease-in-out;
@@ -193,5 +195,33 @@ main{
 }
 .p-custom{
   padding: 4rem!important;
+  @media screen and (max-width: 641px){
+    padding: 2rem!important;
+  }
 }
+.currentInfoTable{
+  .xcol-2-2 {
+    padding: 10px 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .xcol-2-2:nth-child(odd) {
+    border-right: none;
+  }
+
+  .xcol-2-2:nth-child(even) {
+    border-left: none;
+  }
+
+  .xcol-2-2:nth-child(1),
+  .xcol-2-2:nth-child(2) {
+    border-top: none;
+  }
+
+  .xcol-2-2:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+}
+
+
 </style>

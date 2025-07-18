@@ -1,5 +1,6 @@
 import {join} from 'path';
-import {app, BrowserWindow, ipcMain, Menu} from 'electron';
+import {app, BrowserWindow, ipcMain, Menu, dialog} from 'electron';
+import { autoUpdater } from 'electron-updater';
 import {EVENTS_KEYS} from "../utils/EVENTS_KEYS";
 import config, {IS_DEV} from '../config';
 import {openLinkEvent} from "../events/openLinkEvent";
@@ -27,6 +28,51 @@ function createWindow() {
         mainWindow.loadFile(join(__dirname, '../../../index.html'));
     }
     if (IS_DEV) mainWindow.webContents.openDevTools();
+
+    autoUpdater.on('download-progress', (progressObj) => {
+        if (mainWindow) {
+            mainWindow.setProgressBar(progressObj.percent / 100); // Windows & macOS taskbar
+        }
+    });
+}
+
+function initAutoUpdater() {
+    if (isDev) return;
+
+    autoUpdater.setFeedURL({
+        provider: 'generic',
+        url: 'https://dl.bridge.fibdesign.ir'
+    });
+    autoUpdater.checkForUpdates();
+
+    autoUpdater.on('update-available', (info) => {
+        dialog.showMessageBox({
+            type: 'info',
+            title: 'بروزرسانی در دسترس است',
+            message: `نسخه جدید (${info.version}) آماده دانلود است. آیا مایلید همین حالا بروزرسانی را دانلود کنید؟`,
+            buttons: ['بله، دانلود کن', 'خیر']
+        }).then(result => {
+            if (result.response === 0) {
+                autoUpdater.downloadUpdate();
+            }
+        });
+    });
+
+    autoUpdater.on('update-downloaded', () => {
+        dialog.showMessageBox({
+            type: 'info',
+            buttons: ['نصب و راه‌اندازی مجدد', 'بعداً'],
+            title: 'بروزرسانی آماده نصب است',
+            message: 'دانلود نسخه جدید تکمیل شد. آیا مایلید همین حالا برنامه بروزرسانی و راه‌اندازی شود؟'
+        }).then(result => {
+            if (result.response === 0) autoUpdater.quitAndInstall();
+        });
+    });
+
+
+    autoUpdater.on('error', (err) => {
+        dialog.showErrorBox('Update Error', err == null ? 'unknown' : (err.stack || err).toString());
+    });
 }
 
 app.whenReady().then(() => {
@@ -38,7 +84,10 @@ app.whenReady().then(() => {
     ipcMain.handle(EVENTS_KEYS.GET_ACTIVE_ADAPTER, getActiveAdaptor);
     ipcMain.handle(EVENTS_KEYS.TOGGLE_IPV6, toggleIPv6Event);
     ipcMain.handle(EVENTS_KEYS.GET_IPV6_STATUS, getIPV6StatusEvent);
-    createWindow()
+
+    createWindow();
+    initAutoUpdater();
+
     app.on('activate', function () {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })

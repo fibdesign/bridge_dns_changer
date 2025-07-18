@@ -1,6 +1,6 @@
 import {join} from "path";
 
-export const IS_DEV = false;
+export const IS_DEV = process.env.npm_lifecycle_event === "app:dev" || false;
 
 const config = {
     port: 2003,
